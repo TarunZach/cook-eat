@@ -1,50 +1,128 @@
-# Welcome to your Expo app 👋
+# 🍽️ Recipe Generator App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple **React Native** application that generates recipes based on user-provided ingredients. The app interacts with Hugging Face's Mistral-7B-Instruct model to suggest delicious recipes.
 
-## Get started
+---
 
-1. Install dependencies
+## 📜 Features
 
-   ```bash
-   npm install
-   ```
+### ✅ **Ingredient Input**
 
-2. Start the app
+- Users can enter ingredients manually.
+- Ingredients are stored in a list.
+- Users can remove ingredients if needed.
 
-   ```bash
-    npx expo start
-   ```
+### 🍳 **Recipe Generation**
 
-In the output, you'll find options to open the app in a
+- The app sends a request to the **Hugging Face API** with a list of ingredients.
+- The AI model generates a recipe, including:
+  - **Cooking steps** 🥘
+  - **Approximate cooking time** ⏳
+  - **Optional ingredients for enhancement** 🍋
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 🎨 **UI & UX Enhancements**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Uses **Parallax scrolling** for a smooth experience.
+- Custom-themed components (`ThemedText`, `ThemedView`).
+- **Dark mode** support.
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🚀 Installation & Setup
 
-```bash
-npm run reset-project
+### 1️⃣ **Clone the Repository**
+
+```sh
+ git clone https://github.com/TarunZach/recipe-generator-app.git
+ cd recipe-generator-app
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2️⃣ **Install Dependencies**
 
-## Learn more
+```sh
+npm install  # or yarn install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3️⃣ **Set Up Environment Variables**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Create a `.env` file in the root directory and add:
 
-## Join the community
+```sh
+HF_ACCESS_TOKEN=your_huggingface_token_here
+```
 
-Join our community of developers creating universal apps.
+🚨 **Important:** Never expose your API key in a public repository! Use `.gitignore` to exclude `.env`.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 4️⃣ **Run the App**
+
+For **Expo** projects:
+
+```sh
+npx expo start
+```
+
+For **React Native CLI**:
+
+```sh
+npx react-native run-android   # For Android
+tnpx react-native run-ios      # For iOS
+```
+
+---
+
+## 🔧 Project Structure
+
+```
+recipe-generator-app/
+│-- app/
+│   ├── components/
+│   │   ├── HelloWave.tsx
+│   │   ├── ParallaxScrollView.tsx
+│   │   ├── ThemedText.tsx
+│   │   ├── ThemedView.tsx
+│   ├── (tabs)/index.tsx  # Main screen
+│   ├── assets/
+│   ├── styles/
+│-- babel.config.js
+│-- package.json
+│-- .env
+│-- README.md
+```
+
+---
+
+## 🔥 API Integration
+
+The app makes a `POST` request to Hugging Face's **Mistral-7B-Instruct** model:
+
+```js
+const apiUrl =
+  "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3";
+```
+
+---
+
+## 📌 To-Do / Future Improvements
+
+- [ ] **Offline mode** for storing past recipes.
+- [ ] **Save favorite recipes** locally.
+- [ ] **Share recipes** via social media.
+- [ ] **Add more AI models** for better recipe suggestions.
+
+---
+
+## 💡 Contributing
+
+Contributions are welcome! Feel free to submit **issues** or **pull requests**.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+### 💬 Need Help?
+
+If you have any questions, feel free to **open an issue** or reach out!
