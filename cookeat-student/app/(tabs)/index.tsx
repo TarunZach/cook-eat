@@ -56,7 +56,7 @@ Include cooking steps, approximate cooking time, and any optional ingredients th
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${process.env.EXPO_PUBLIC_HF_API_URL}`,
           },
           body: JSON.stringify({
             inputs: prompt,
@@ -127,7 +127,7 @@ Include cooking steps, approximate cooking time, and any optional ingredients th
           <View style={styles.ingredientList}>
             {ingredients.map((item, index) => (
               <View key={index} style={styles.ingredientItem}>
-                <Text>{item}</Text>
+                <Text style={styles.ingredientListItem}>{item}</Text>
                 <Button
                   title="Remove"
                   onPress={() => removeIngredient(index)}
@@ -189,6 +189,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 5,
+  },
+  ingredientListItem: {
+    color: "#ffffff",
   },
   recipeContainer: {
     marginTop: 20,
